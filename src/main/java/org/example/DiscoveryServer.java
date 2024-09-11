@@ -55,14 +55,12 @@ public class DiscoveryServer {
                         }
                     }
                     if (response.length() > 0) {
-                        response.setLength(response.length() - 1); // Remove a última vírgula
-                    } else {
-                        response.append("No other servers found.");
-                    }
+                        response.setLength(response.length() - 1); 
+                    } 
+                    
                     String responseString = response.toString();
                     byte[] responseBytes = responseString.getBytes();
 
-                    // Enviar resposta para o cliente que fez a solicitação
                     DatagramPacket responsePacket = new DatagramPacket(responseBytes, responseBytes.length, clientAddress, clientPort);
                     socket.send(responsePacket);
                     System.out.println("Responded with server info " + responseString + " to " + clientAddress + ":" + clientPort);
@@ -78,14 +76,12 @@ public class DiscoveryServer {
         }
     }
 
-    // Método para adicionar um novo servidor WebSocket
     public static void addServer(InetAddress address, int port) {
         synchronized (knownServers) {
             knownServers.computeIfAbsent(address, k -> new HashSet<>()).add(port);
         }
     }
 
-    // Método para remover um servidor WebSocket
     public static void removeServer(InetAddress address) {
         synchronized (knownServers) {
             knownServers.remove(address);
