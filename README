@@ -1,5 +1,8 @@
 # A Simple Blockchain Payment System
 
+## Descrição
+Este projeto é uma solução de blockchain que visa **receber um pagamento, validá-lo e integrá-lo à rede**.
+
 ## Software Functional Requirements
 
 ## Software Non-Functional Requirements
